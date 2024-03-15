@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja</title>
+</head>
+<body>
+    <h1>Bem-vindo à Minha Loja</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            {{ product.name }} - R$ {{ product.price }}
+            <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+                <input type="number" name="quantity" value="1" min="1">
+                <button type="submit">Adicionar ao Carrinho</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Link para ir para o carrinho -->
+    <a href="{{ url_for('cart') }}">Ir para o Carrinho</a>
+
+    <!-- Link para criar um novo produto -->
+    <a href="{{ url_for('create_product') }}">Criar Novo Produto</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+</head>
+<body>
+    <h1>Seu Carrinho de Compras</h1>
+    <ul>
+        {% for item in cart_items %}
+        <li>
+            Produto: {{ item.product_name }}<br>
+            Quantidade: {{ item.quantity }}<br>
+            Preço Unitário: R$ {{ item.unit_price }}<br>
+            Total: R$ {{ item.total_price }}
+        </li>
+        {% endfor %}
+    </ul>
+    <h3>Total do Carrinho: R$ {{ total_cart_price }}</h3>
+
+    <!-- Link para voltar para a página inicial -->
+    <a href="{{ url_for('index') }}">Voltar para o início</a>
+</body>
+</html>
