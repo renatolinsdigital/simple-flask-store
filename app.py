@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from dotenv import load_dotenv
 from db_models.models import db
-from db_config import configure_database
+from config.db_config import configure_local_database
 from routes.routes import bp
 
 # Load environment variables from .env file
@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 # Configure the database
-configure_database(app)
+configure_local_database(app)
 
 # Initialize the Flask application with the database
 db.init_app(app)
