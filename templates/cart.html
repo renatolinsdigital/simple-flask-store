@@ -7,18 +7,17 @@
 </head>
 <body>
     <h1>Your Shopping Cart</h1>
-    <ul>
-        {% for item in cart_items %}
-        <li>
-            Product: {{ item.product_name }}<br>
-            Quantity: {{ item.quantity }}<br>
-            Unit Price: $ {{ item.unit_price }}<br>
-            Total: $ {{ item.total_price }}
-        </li>
-        {% endfor %}
-    </ul>
+    {% for item in cart_items %}
+    <div>
+        <p>{{ item.product.name }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Unit Price: ${{ item.product.price }}</p>
+        <p>Total Price: ${{ item.total_price }}</p>
+    </div>
+    {% endfor %}
+
     <h3>Total Cart Price: $ {{ total_cart_price }}</h3>
 
-    <a href="{{ url_for('index') }}">Back to Home</a>
+    <a href="{{ url_for('routes.index') }}">Back to Home</a>
 </body>
 </html>
