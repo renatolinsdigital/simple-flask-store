@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja</title>
+    <title>My Store</title>
 </head>
 <body>
-    <h1>Bem-vindo à Minha Loja</h1>
+    <h1>Welcome to My Store</h1>
     <ul>
         {% for product in products %}
         <li>
-            {{ product.name }} - R$ {{ product.price }}
+            {{ product.name }} - $ {{ product.price }}
             <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
                 <input type="number" name="quantity" value="1" min="1">
-                <button type="submit">Adicionar ao Carrinho</button>
+                <button type="submit">Add to Cart</button>
             </form>
         </li>
         {% endfor %}
@@ -28,10 +28,10 @@
         {% endif %}
     {% endwith %}
 
-    <!-- Link para ir para o carrinho -->
-    <a href="{{ url_for('cart') }}">Ir para o Carrinho</a>
+    <!-- Link to go to the shopping cart -->
+    <a href="{{ url_for('cart') }}">Go to Cart</a>
 
-    <!-- Link para criar um novo produto -->
-    <a href="{{ url_for('create_product') }}">Criar Novo Produto</a>
+    <!-- Link to create a new product -->
+    <a href="{{ url_for('create_product') }}">Create New Product</a>
 </body>
 </html>
