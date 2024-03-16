@@ -1,27 +1,19 @@
 import os
-from db_models.models import db
 from flask import Flask
 from dotenv import load_dotenv
-from pathlib import Path
+from db_models.models import db
+from db_config import configure_database
 from routes.routes import bp
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Create a Flask application instance
+# Create a Flask application instance with a secret
 app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
-# Handling database Path
-db_path = os.getenv('DATABASE_PATH')
-if not db_path:
-    raise RuntimeError("DATABASE_PATH is not set")
-os.makedirs(db_path, exist_ok=True)
-
-# Handling database URI
-project_dir = Path(__file__).resolve().parent
-db_uri = f'sqlite:///{project_dir}/{db_path}/store.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+# Configure the database
+configure_database(app)
 
 # Initialize the Flask application with the database
 db.init_app(app)
