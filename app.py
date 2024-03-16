@@ -10,13 +10,22 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY') 
 
-# Handling Database URL
+# Handling database Path
 db_path = os.getenv('DATABASE_PATH') 
 if not db_path:
     raise RuntimeError("DATABASE_PATH is not set")
 os.makedirs(db_path, exist_ok=True)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}/store.db"
+# Handling database URI
+
+# db_uri = f'sqlite:///store.db' - this works
+project_dir = os.path.dirname(os.path.abspath(__file__))
+db_uri = 'sqlite:///{}'.format(
+    os.path.join(project_dir, db_path, 'store.db')
+)
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
 # Initialize the Flask application with the database
 db.init_app(app)

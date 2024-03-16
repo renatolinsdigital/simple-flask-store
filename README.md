@@ -28,7 +28,7 @@ SimpleStore is a lightweight e-commerce platform built with Flask, designed as a
 * Activate/reactivate a virtual environment associated to this project with `pipenv shell`.
 * Confirm virtual environment creation path with `pipenv --venv`.
 * Install project's dependencies using `pipenv install`.
-* Run this project with `flask run`.
+* Run this project with `python app.py` to make sure the data base Path + URI are going to be resolved. After that, you can run this app with `flask run`.
 * Open your browser and check the project running with `localhost:5000`.
 * Make desired updates as you wish, this project is fully open source.
 
