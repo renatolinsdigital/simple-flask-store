@@ -1,11 +1,12 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from flask_sqlalchemy import SQLAlchemy
 
-# Load environment variables from .env file
 load_dotenv()
+db = SQLAlchemy()
 
-# Configures a local database URI (for development purposes only)
+
 def configure_local_database(app):
     db_path = os.getenv('LOCAL_DATABASE_PATH')
     if not db_path:

@@ -1,9 +1,8 @@
 import os
 from flask import Flask
 from dotenv import load_dotenv
-from db_models.models import db
 from config.assets import register_assets_for
-from config.database import configure_local_database
+from config.database import configure_local_database, db
 from routes.routes import bp
 
 # Load environment variables from .env file
