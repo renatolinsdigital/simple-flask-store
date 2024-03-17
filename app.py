@@ -2,7 +2,8 @@ import os
 from flask import Flask
 from dotenv import load_dotenv
 from db_models.models import db
-from config.db_config import configure_local_database
+from config.assets import register_assets_for
+from config.database import configure_local_database
 from routes.routes import bp
 
 # Load environment variables from .env file
@@ -14,6 +15,9 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 # Configure the database
 configure_local_database(app)
+
+# Attach assets and static files
+register_assets_for(app)
 
 # Initialize the Flask application with the database
 db.init_app(app)

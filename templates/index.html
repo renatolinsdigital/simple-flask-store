@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Store</title>
-</head>
-<body>
-    <h1>Welcome to My Store</h1>
-    <ul>
+{% extends 'base.html' %}
+
+{% block app_main_content %}
+<header class="app-hero">
+  <h1>Welcome to My Store</h1>
+</header>
+<div class="container page">
+    <ul class="grid-container">
         {% for product in products %}
-        <li>
-            {{ product.name }} - $ {{ product.price }}
-            <form action="{{ url_for('routes.add_to_cart', product_id=product.id) }}" method="POST">
-                <input type="number" name="quantity" value="1" min="1">
-                <button type="submit">Add to Cart</button>
+        <li class="grid-item">
+           <div class="product-image">No image</div>
+            <p class="item-name">
+              {{ product.name }}
+            </p>
+            <p class="author-creator">Author/Creator name<p>
+            <p class="product-price">  $ {{ product.price }}</p>
+            <form class="container" action="{{ url_for('routes.add_to_cart', product_id=product.id) }}" method="POST">
+                <input class="removed" type="number" name="quantity" value="1" min="1">
+                <button class="button stretched" type="submit">Add to Cart</button>
             </form>
         </li>
         {% endfor %}
@@ -27,11 +30,11 @@
         </ul>
         {% endif %}
     {% endwith %}
+</div>
+{% endblock %}
 
-    <!-- Link to go to the shopping cart -->
-    <a href="{{ url_for('routes.cart') }}">Go to Cart</a>
 
-    <!-- Link to create a new product -->
-    <a href="{{ url_for('routes.create_product') }}">Create New Product</a>
-</body>
-</html>
+
+
+
+

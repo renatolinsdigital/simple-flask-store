@@ -7,6 +7,10 @@ name = "pypi"
 flask = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
+flask-assets = "*"
+jsmin = "*"
+cssmin = "*"
+libsass = "*"
 
 [dev-packages]
 

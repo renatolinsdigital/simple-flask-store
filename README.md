@@ -8,6 +8,7 @@ SimpleStore is a lightweight e-commerce platform built with Flask, designed as a
 * Python as the backend language
 * Flask as the backend web framework
 * SQLite as the database (for local development)
+* Jinja2 as a template engine for back-end UI rendering
 * Vue + Javascript in a 'modular fashion' for generating dynamic content
 
 # Features (WIP)
@@ -28,7 +29,7 @@ SimpleStore is a lightweight e-commerce platform built with Flask, designed as a
 * Coding Style and Best Practices: Following Python coding conventions (PEP 8) and adopting best practices for writing clean, readable, and efficient Python code.
 * Basics of relational databases (SQL, DDL, DML) and understanding how relationships function.
 * Essential knowledge for API creation: Defining endpoints using RESTful principles and HTTP methods like GET (retrieve), POST (create), PUT (update), DELETE (remove), PATCH (partially update), and OPTIONS (get communication options). Additionally, you can think of error handling with status codes, rate limiting, versioning, caching, monitoring, and logging for robust and secure API functionality.
-* Flask + SQLAlchemy: Essential knowledge for managing routing, templating, database operations, etc.
+* Flask + SQLAlchemy: Essential knowledge for managing routing, templating, blueprints, assets configuration, database operations, etc.
 * Essential web app security knowledge: Implementing parameterized queries to prevent SQL injection attacks, ensuring authentication and authorization using JWT, enabling HTTPS/SSL to encrypt data in transit, securely.managing secret keys for sensitive information, managing app and database sessions securely to prevent session hijacking, implementing data encryption for protecting sensitive data, etc.
 
 # Running and coding in this project
@@ -44,6 +45,31 @@ SimpleStore is a lightweight e-commerce platform built with Flask, designed as a
 * Make desired updates as you wish, this project is fully open source.
 
 Once you have completed your coding session, you can stop the development server by pressing `CTRL + C` and exit the virtual environment by using the `exit` command.
+
+# Recommended plugins installation
+
+__Python (by Microsoft)__: Boost your Python development with Microsoft's VS Code extension. Access IntelliSense, linting, debugging, navigation, testing, Jupyter support, and code refactoring in a single, professional package. 
+
+__autopep8 (by Microsoft)__: The Autopep8 VS Code plugin automatically formats Python code to adhere to the PEP 8 style guide within Visual Studio Code. It provides on-the-fly feedback, customizable formatting options, and seamless integration with VS Code, promoting consistent and standardized code formatting.
+
+__Code Spell Checker(by Street Side Software)__:  This extension helps maintain clean and error-free code by highlighting spelling mistakes in comments and strings. It assists in avoiding typos and ensuring code professionalism.
+
+__Jinja (by wholroyd)__: Install this plugin to add Jinja template language support
+
+__General Configuration__: VS Code allow you to customize settings, keybindings, and themes according to your preferences. Explore the features provided by VS Code and its plugins to maximize productivity and efficiency in Python development.
+
+NOTE: To enable automatic code formatting with __autopep8__ when saving Python files, create a folder named __.vscode__ in the root directory where your Python scripts are located. Inside this folder, include a file named __settings.json__ with the following configuration:
+
+```json
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
+  }
+}
+```
+
+After configuring this, you'll notice that Python's coding style guidelines are automatically applied. This includes maintaining a two-line distance between function definitions, adding spaces around operators, and after commas in function arguments, etc. These automated adjustments can save us a lot of time by eliminating the need to manually adhere to PEP 8.
 
 # Some important considerations for those planning to deploy and use this app seriously (And yes, I know, lots of work to do, but that's life)
 

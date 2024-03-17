@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Product</title>
-</head>
-<body>
-    <h1>Create New Product</h1>
-    <form action="{{ url_for('routes.create_product') }}" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" min="0" required><br><br>
-        <button type="submit">Create Product</button>
+
+
+{% extends 'base.html' %}
+
+{% block app_main_content %}
+<header class="app-hero">
+  <h1>Admin - Create Product</h1>
+</header>
+<div class="container page">
+    <form class="form" action="{{ url_for('routes.create_product') }}" method="POST">
+        <div class="form-entry">
+            <label for="name">Product Code</label>
+            <input type="text" id="code" name="code" required>
+        </div>
+        <div class="form-entry">
+            <label for="name">Product Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-entry">
+            <label for="price">Price ($)</label>
+            <input type="number" id="price" name="price" step="0.01" min="0" required>
+        </div>
+        <button class="button" type="submit">Create Product</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

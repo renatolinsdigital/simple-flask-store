@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    My Store
+  </title>
+  {% assets "bundle_css" %}
+  <link rel="stylesheet" href="{{ ASSET_URL }}" />
+  {% endassets %}
+</head>
+
+<body>
+  <header class="app-header">
+    <a class="logo-container" href="{{ url_for('routes.index') }}">My Store v1.0</a>
+    <a href="{{ url_for('routes.cart') }}">Go to Cart</a>
+    <a href="{{ url_for('routes.create_product') }}">Create New Product</a>
+  </header>
+  <main>
+    {% block app_main_content %}{% endblock %}
+  </main>
+  <footer>
+    <div class="container">
+      <p class="footer-text">
+        Developed by
+        <a href="https://www.linkedin.com/in/renatolinsdigital" alt="Renato Lins Linkedin" target="_blank">Renato Lins</a>
+      </p>
+    </div>
+  </footer>
+  {% assets "bundle_js" %}
+  <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+</body>
+
+</html>

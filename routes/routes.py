@@ -5,6 +5,8 @@ from db_models.models import db, Product, Order
 bp = Blueprint('routes', __name__)
 
 # Define your routes using the Blueprint
+
+
 @bp.route('/')
 def index():
     # Retrieve all products from the database
@@ -13,6 +15,8 @@ def index():
     return render_template('index.html', products=products)
 
 # Route to add a product to the cart
+
+
 @bp.route('/add_to_cart/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):
     # Get the product object based on the product_id
@@ -42,6 +46,8 @@ def add_to_cart(product_id):
     return redirect(url_for('routes.index'))
 
 # Route to create a new product
+
+
 @bp.route('/create_product', methods=['GET', 'POST'])
 def create_product():
     if request.method == 'POST':
@@ -52,28 +58,30 @@ def create_product():
         product = Product(name=name, price=price)
         db.session.add(product)
         db.session.commit()
-        # Flash a success message
-        flash('Product created successfully!', 'success')
         # Redirect to the home page
         return redirect(url_for('routes.index'))
     # Render the create_product.html template for GET requests
     return render_template('create_product.html')
 
 # Route for the shopping cart
+
+
 @bp.route('/cart')
 def cart():
     # Retrieve all items in the cart from the database
     cart_items = Order.query.all()
     # Calculate the total cart price
     total_cart_price = sum(item.total_price for item in cart_items)
-    
+
     # Ensure each Order object has a reference to its corresponding Product
     for item in cart_items:
         item.product = Product.query.get(item.product_id)
-    
+
     # Render the cart.html template with the cart items and total cart price
     return render_template('cart.html', cart_items=cart_items, total_cart_price=total_cart_price)
 
 # Return the Blueprint object for registration in app.py
+
+
 def create_routes_blueprint():
     return bp

@@ -1,23 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-</head>
-<body>
-    <h1>Your Shopping Cart</h1>
-    {% for item in cart_items %}
-    <div>
-        <p>{{ item.product.name }}</p>
-        <p>Quantity: {{ item.quantity }}</p>
-        <p>Unit Price: ${{ item.product.price }}</p>
-        <p>Total Price: ${{ item.total_price }}</p>
+{% extends 'base.html' %}
+
+{% block app_main_content %}
+<header class="app-hero">
+  <h1>Your Shopping Cart</h1>
+</header>
+<div class="container page">
+    <ul class="container">
+        {% for item in cart_items %}
+          <li class="cart-entry">
+            <p class="product-name">{{ item.product.name }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Unit Price: ${{ item.product.price }}</p>
+            <p>Total Price: ${{ item.total_price }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+
+    <p class="cart-total">Total Cart Price: $ <span>{{ total_cart_price }}</span></p>
+
+    <div class="cart-actions">
+        <a class="button" href="{{ url_for('routes.index') }}">Keep shopping</a>
+        <a class="button secondary" href="#">Checkout - WIP</a>
     </div>
-    {% endfor %}
+</div>
+{% endblock %}
 
-    <h3>Total Cart Price: $ {{ total_cart_price }}</h3>
 
-    <a href="{{ url_for('routes.index') }}">Back to Home</a>
-</body>
-</html>
+
+
+
+
+
