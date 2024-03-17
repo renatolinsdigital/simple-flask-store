@@ -2,9 +2,14 @@
 
 {% block app_main_content %}
 <header class="app-hero">
-  <h1>Welcome to My Store</h1>
+    {% if user %}
+    <h1>Welcome {{ user.name }}!</h1>
+    {% else %}
+    <h1>Welcome to My Store</h1>
+    {% endif %}
 </header>
 <div class="container page">
+    {% if products %}
     <ul class="grid-container">
         {% for product in products %}
         <li class="grid-item">
@@ -12,7 +17,7 @@
             <p class="item-name">
               {{ product.name }}
             </p>
-            <p class="author-creator">Author/Creator name<p>
+            <p class="author-creator">Author/Creator name</p>
             <p class="product-price">  $ {{ product.price }}</p>
             <form class="container" action="{{ url_for('routes.add_to_cart', product_id=product.id) }}" method="POST">
                 <input class="removed" type="number" name="quantity" value="1" min="1">
@@ -21,6 +26,9 @@
         </li>
         {% endfor %}
     </ul>
+    {% else %}
+    <p>No product has been registered yet.</p>
+    {% endif %}
     {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
@@ -32,9 +40,3 @@
     {% endwith %}
 </div>
 {% endblock %}
-
-
-
-
-
-

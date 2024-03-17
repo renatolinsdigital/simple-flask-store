@@ -5,29 +5,27 @@
   <h1>Your Shopping Cart</h1>
 </header>
 <div class="container page">
-    <ul class="container">
-        {% for item in cart_items %}
-          <li class="cart-entry">
-            <p class="product-name">{{ item.product.name }}</p>
-            <p>Quantity: {{ item.quantity }}</p>
-            <p>Unit Price: ${{ item.product.price }}</p>
-            <p>Total Price: ${{ item.total_price }}</p>
-          </li>
-        {% endfor %}
-      </ul>
+    {% if cart_items %}
+        <ul class="container">
+            {% for item in cart_items %}
+              <li class="cart-entry">
+                <p class="product-name">{{ item.product.name }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+                <p>Unit Price: ${{ item.product.price }}</p>
+                <p>Total Price: ${{ item.total_price }}</p>
+              </li>
+            {% endfor %}
+          </ul>
 
-    <p class="cart-total">Total Cart Price: $ <span>{{ total_cart_price }}</span></p>
+        <p class="cart-total">Total Cart Price: $ <span>{{ total_cart_price }}</span></p>
 
-    <div class="cart-actions">
-        <a class="button" href="{{ url_for('routes.index') }}">Keep shopping</a>
-        <a class="button secondary" href="#">Checkout - WIP</a>
-    </div>
+        <div class="cart-actions">
+            <a class="button" href="{{ url_for('routes.index') }}">Keep shopping</a>
+            <a class="button secondary" href="#">Checkout - WIP</a>
+        </div>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a class="button" href="{{ url_for('routes.index') }}">Start shopping</a>
+    {% endif %}
 </div>
 {% endblock %}
-
-
-
-
-
-
-

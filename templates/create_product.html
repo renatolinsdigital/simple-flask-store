@@ -9,7 +9,7 @@
 <div class="container page">
     <form class="form" action="{{ url_for('routes.create_product') }}" method="POST">
         <div class="form-entry">
-            <label for="name">Product Code</label>
+            <label for="code">Product Code</label>
             <input type="text" id="code" name="code" required>
         </div>
         <div class="form-entry">
@@ -22,5 +22,14 @@
         </div>
         <button class="button" type="submit">Create Product</button>
     </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
 </div>
 {% endblock %}
