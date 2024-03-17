@@ -28,11 +28,6 @@ class CartItem(db.Model):
         'product.id'), nullable=False)
     cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=False)
 
-    # # Define many-to-one relationships with Product and Cart models
-    # product = db.relationship(
-    #     'Product', backref=db.backref('cart_items', lazy=True))
-    # cart = db.relationship('Cart', backref=db.backref('items', lazy=True))
-
     def __repr__(self):
         return f'<CartItem {self.quantity} of {self.product.name}>'
 
@@ -45,9 +40,6 @@ class Cart(db.Model):
     # Define a foreign key relationship to the User model
     user_id = db.Column(db.Integer, db.ForeignKey(
         'user.id'), unique=True, nullable=False)
-
-    # # Define a one-to-one relationship with the User model
-    # user = db.relationship('User', backref='cart', uselist=False, lazy=True)
 
     # Define a one-to-many relationship with CartItem model
     items = db.relationship('CartItem', backref='cart', lazy=True)

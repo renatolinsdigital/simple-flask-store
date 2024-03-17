@@ -21,6 +21,8 @@ SimpleStore is a lightweight e-commerce platform built with Flask, designed as a
 * Admin Dashboard: Admin panel to manage products, orders, customers, and inventory.
 * Email Notifications: Send email notifications for order confirmation, status updates, and shipping tracking.
 
+---
+
 # Necessary background to work in this project (TBD)
 
 * Basics of HTML, CSS, Javascript and Sass.
@@ -33,6 +35,14 @@ SimpleStore is a lightweight e-commerce platform built with Flask, designed as a
 * Essential web app security knowledge: Implementing parameterized queries to prevent SQL injection attacks, ensuring authentication and authorization using JWT, enabling HTTPS/SSL to encrypt data in transit, securely.managing secret keys for sensitive information, managing app and database sessions securely to prevent session hijacking, implementing data encryption for protecting sensitive data, etc.
 
 # Running and coding in this project
+
+* Create a `.env` file in the project's root folder. For development purposes, it will work fine if you fill it like this:
+
+```js
+FLASK_SECRET_KEY=my_flask_app_security_key
+FLASK_PORT=5000 
+LOCAL_DATABASE_PATH=data
+```
 
 * Have SQLite installed on your machine. You can check the official SQLite website and follow the installation instructions.
 * Install Pipenv on your machine with `pip install pipenv`.
@@ -70,6 +80,8 @@ NOTE: To enable automatic code formatting with __autopep8__ when saving Python f
 ```
 
 After configuring this, you'll notice that Python's coding style guidelines are automatically applied. This includes maintaining a two-line distance between function definitions, adding spaces around operators, and after commas in function arguments, etc. These automated adjustments can save us a lot of time by eliminating the need to manually adhere to PEP 8.
+
+---
 
 # Some important considerations for those planning to deploy and use this app seriously (And yes, I know, lots of work to do, but that's life)
 
